@@ -22,7 +22,8 @@ var shell = require('gulp-shell');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
-// TYPESCRIPT
+////////////////////// TYPESCRIPT //////////////////////
+
 
 gulp.task('tsClean', function(){
   return del(['app/*.js', 'app/*.js.map']);
@@ -32,7 +33,8 @@ gulp.task('ts', ['tsClean'], shell.task([
   'tsc'
 ]));
 
-// BOWER
+////////////////////// BOWER //////////////////////
+
 
 gulp.task('jsBowerClean', function(){
   return del(['./build/js/vendor.min.js']);
@@ -57,7 +59,7 @@ gulp.task('cssBower', ['cssBowerClean'], function() {
 
 gulp.task('bower', ['jsBower', 'cssBower']);
 
-// SASS
+////////////////////// SASS //////////////////////
 
 gulp.task('sassBuild', function() {
   return gulp.src(['resources/styles/*'])
@@ -67,7 +69,8 @@ gulp.task('sassBuild', function() {
     .pipe(gulp.dest('./build/css'));
 });
 
-// SERVER
+////////////////////// SERVER //////////////////////
+
 
 gulp.task('serve', ['build'], function() {
   browserSync.init({
@@ -97,7 +100,7 @@ gulp.task('tsBuild', ['ts'], function(){
   browserSync.reload();
 });
 
-// GLOBAL BUILD TASK
+////////////////////// GLOBAL BUILD TASK //////////////////////
 
 gulp.task('build', ['ts'], function(){
   // we can use the buildProduction environment variable here later.
